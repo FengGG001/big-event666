@@ -61,3 +61,25 @@ form.verify({
         }
     }
 })
+// -------------------------------表单的登录功能--------------------
+// 注册表单提交事件
+$('.login-form').on('submit',function(e) {
+    // 阻止表单提交
+    e.preventDefault();
+    // 获取表单的数据
+    var data = $(this).serialize();
+    // 使用 ajax 请求提交事件
+    $.ajax({
+        type: 'POST',
+        url: 'http://www.liulongbin.top:3007/api/login',
+        data: data,
+        success: function(res) {
+            // 不管登不登录上都要提示一下
+            layer.msg(res.message);
+            // 判断一下  数据是否符合要求
+            if(res.status === 0) {
+                
+            }
+        }
+    })
+})
