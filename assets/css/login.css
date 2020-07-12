@@ -1,0 +1,61 @@
+html,body {
+    height: 100%;
+    background: url('/assets/images/login_bg.jpg') no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+/* logo */
+#logo {
+    width: 1200px;
+    margin: 20px auto 0;
+}
+
+/* 登录和注册的盒子 */
+#login,#register {
+    height: 310px;
+    width: 400px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#login {
+    display: block;
+}
+/* 先让注册和盒子隐藏 */
+#register {
+    display: none;
+}
+/* 登录标题盒子 */
+.title {
+    height: 60px;
+    background: url('/assets/images/login_title.png') no-repeat center;
+}
+
+/* 输入框大盒子 */
+.login-form {
+    padding: 0 30px;
+}
+
+
+/* 输入框 */
+.layui-form-item {
+    position: relative;
+}
+.layui-input {
+    padding-left: 35px;
+}
+
+.reglink {
+    float: right;
+}
+
+/* 图标 */
+.layui-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
