@@ -36,7 +36,7 @@ $('.register-form').on('submit',function(e) {
     // 最后把输入框的内容清空
     $('.layui-input').val('');
 })
-//-------------------------注册的表单验证功能--------------------------
+//-------------------------注册的表单验证功能----------------------------------------
 // 使用 layui 提供的模块，必须提前引入模块
 var form = layui.form;
 // 调用 layui 方法验证表单
@@ -47,13 +47,13 @@ form.verify({
     len : function(val) {
         // 判断当前输入的是否符合要求
         if(!/^\S{6,16}$/.test(val)) {
-            return'Sorry,您输入密码不正确';
+            return'Sorry,密码输入不正确';
         }
     },
     // 判断第二次输入的密码是否跟上一次输入的一致
     same : function(val) {
         // 获取当前输入的密码
-        var pwd = $('input[name=password]').val();
+        var pwd = $('.pwd').val();
         // 判断当前两次输入的是否一致
         if(pwd != val) {
             // 如果当前输入的不等于前面输入 则 return
@@ -61,7 +61,7 @@ form.verify({
         }
     }
 })
-// -------------------------------表单的登录功能--------------------
+// -------------------------------表单的登录功能---------------------------------
 // 注册表单提交事件
 $('.login-form').on('submit',function(e) {
     // 阻止表单提交
@@ -78,7 +78,10 @@ $('.login-form').on('submit',function(e) {
             layer.msg(res.message);
             // 判断一下  数据是否符合要求
             if(res.status === 0) {
-                
+                // 把 token 保存到本地
+                localStorage.setItem('token',res.token)
+                // 登录成功之后，跳转的首页
+                location.href = '/index.html';
             }
         }
     })

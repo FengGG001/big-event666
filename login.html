@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>大事件项目</title>
     <!-- 引入css文件 -->
     <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
     <!-- 引入自己的css -->
@@ -33,7 +33,7 @@
             <!-- 密码 -->
             <div class="layui-form-item">
                 <i class="layui-icon layui-icon-password"></i>
-                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                <input type="password" name="password" required lay-verify="required|len" placeholder="请输入密码" autocomplete="off"
                     class="layui-input">
             </div>
             <!-- 登录 -->
@@ -65,7 +65,7 @@
             <div class="layui-form-item">
                 <i class="layui-icon layui-icon-password"></i>
                 <input type="password" name="password" required lay-verify="required|len" placeholder="请输入密码" autocomplete="off"
-                    class="layui-input">
+                    class="layui-input pwd">
             </div>
             <!-- 确认密码 -->
             <div class="layui-form-item">
