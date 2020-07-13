@@ -37,3 +37,9 @@ iframe {
 .layui-body {
     overflow: hidden;
 }
+
+/* 底部文字 */
+.layui-footer {
+    text-align: center;
+    font-size: 12px;
+}

@@ -1,3 +1,10 @@
+<script>
+    // 判断本地存储的 token 是否存在，如果不存在则不会跳转页面
+    if(localStorage.getItem('token') === null) {
+        location.href = '/login.html';
+    }
+</script>
+
 <!DOCTYPE html>
 <html>
 
@@ -32,7 +39,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="">
+                    <a href="javascript:;" id="logout">
                         <i class="layui-icon layui-icon-logout"></i>退出
                     </a>
                 </li>
@@ -91,6 +98,8 @@
     </script>
     <!-- 引入 jQuery 文件 -->
     <script src="/assets/lib/jquery.js"></script>
+    <!-- 引入 js 的统一配置文件 -->
+    <script src="/assets/js/common.js"></script>
     <!-- 引入自己的 js 文件 -->
     <script src="/assets/js/index.js"></script>
 </body>
