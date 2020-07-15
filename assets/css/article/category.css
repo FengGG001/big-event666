@@ -1,0 +1,15 @@
+/* body 的背景颜色 */
+body {
+    background-color: #f2f3f5;
+}
+/* 调整卡片面板的边距 */
+.layui-card {
+    margin: 15px;
+}
+
+/* 调整两端对齐 */
+.layui-card-header {
+    display: flex;
+    align-items: center;  /* 上下居中对齐 */
+    justify-content: space-between;  /* 左右两端对齐 */
+}
