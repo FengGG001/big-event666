@@ -9,6 +9,7 @@ $.ajaxPrefilter(function (options) {
             // 跳转页面到 login.html
             location.href = '/login.html'
         }
+        console.log(xhr)
     }
     // 统一配置headers
     options.headers = {
