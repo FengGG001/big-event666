@@ -21,7 +21,7 @@ $('.register-form').on('submit',function(e) {
     // 使用 ajax 请求，将输入的提交到 接口
     $.ajax({
         type : 'POST',
-        url : 'http://www.liulongbin.top:3007/api/reguser',
+        url : '/api/reguser',
         data : data,
         success : function(res) {
             // 根据接口提供的数据 是否正确都要提示一下
@@ -71,7 +71,7 @@ $('.login-form').on('submit',function(e) {
     // 使用 ajax 请求提交事件
     $.ajax({
         type: 'POST',
-        url: 'http://www.liulongbin.top:3007/api/login',
+        url: '/api/login',
         data: data,
         success: function(res) {
             // 不管登不登录上都要提示一下
