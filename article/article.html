@@ -17,7 +17,7 @@
         <div class="layui-card-body">
             <!-- 内容区 start -->
             <!-- 表单搜索区 start -->
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="serach">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <div class="layui-input-inline" style="width: 200px;">
@@ -79,11 +79,12 @@
         <tr>
             <td>{{val.title}}</td>
             <td>{{val.cate_name}}</td>
-            <td>{{val.pub_date}}</td>
+            <td>{{val.pub_date|formatDate}}</td>
             <td>{{val.state}}</td>
             <td>
-                <button type="button" class="layui-btn layui-btn-xs edit">编辑</button>
-                <button type="button" class="layui-btn layui-btn-xs layui-btn-danger delete btn">删除</button>
+                <a href="/article/edit.html?id={{val.Id}}" target=sm class="layui-btn layui-btn-xs edit">编辑</a>
+                <!-- <button type="button" class="layui-btn layui-btn-xs edit"></button> -->
+                <button data-id="{{val.Id}}" type="button" class="layui-btn layui-btn-xs layui-btn-danger delete btn delete">删除</button>
             </td>
         </tr>
         {{/each}}

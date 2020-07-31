@@ -32,13 +32,13 @@ function renderPage(t) {
         curr: data.pagenum, // 显示当前页
         // groups: 5, // 连续显示的页码值
         limits: [2, 3, 5, 7],
-        layout: ['limit', 'prev', 'page', 'next', 'skip','count'],
+        layout: ['limit', 'prev', 'page', 'next', 'skip', 'count'],
         // jump  切换页面时的回调函数   刷新页码的时候触发这个函数
-        jump: function(obj,first) {
+        jump: function (obj, first) {
             // 刷新页面时，first = true  切换页面的时候 first = undefined
             // obj 就是当前点击哪页，curr 就显示哪页的页码值
             // 当切换页码的时候，调用函数渲染页面
-            if(first === undefined) {
+            if (first === undefined) {
                 // 由于 obj.curr 对应的是当前页码的值  所以需要修改 ajax 函数
                 data.pagenum = obj.curr;
                 data.pagesize = obj.limit;
@@ -51,16 +51,16 @@ function renderPage(t) {
 // ----------------------------------------- ajxj请求获取所有分类 ---------------------------------------------
 $.ajax({
     url: '/my/article/cates',
-    success: function(res) {
-        var html = template('tpl-category',res)
+    success: function (res) {
+        var html = template('tpl-category', res)
         $('#category').html(html)
         form.render('select')
-    } 
+    }
 })
 
 // ---------------------------------- 筛选 -------------------------------
 // 搜索区的表单提交了，阻止表单默认行为 
-$('form').on('submit',function(e) {
+$('form').on('submit', function (e) {
     e.preventDefault();
     // 获取两个下拉框的内容
     var cate = $('#category').val();
@@ -76,7 +76,47 @@ $('form').on('submit',function(e) {
     renderArticle();
 })
 
-// ------------------------------------- 删除按钮 --------------------------------
-$('tbody').on('click','.btn',function() {
-    
+// ---------------------- 定义过滤器函数，处理时间 -------------------------
+template.defaults.imports.formatDate = function (val) {
+    var d = new Date(val);
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1;
+    var day = d.getDate();
+    var hour = d.getDate();
+    var m = d.getDate();
+    var s = d.getDate();
+    return year + '-' + month + '-' + day + '    ' + hour + ':' + m + ':' + s;
+}
+
+
+// template.defaults.imports.dateFormat = function (dtStr) {
+//     var dt = new Date(dtStr)
+
+//     var y = dt.getFullYear()
+//     var m = padZero(dt.getMonth() + 1)
+//     var d = padZero(dt.getDate())
+
+//     var hh = padZero(dt.getHours())
+//     var mm = padZero(dt.getMinutes())
+//     var ss = padZero(dt.getSeconds())
+
+//     return y + '-' + m + '-' + d + ' ' + hh + ':' + mm + ':' + ss
+// }
+
+
+// ================================ 完成文章删除 ===========================================
+$('body').on('click', '.delete', function () {
+    var id = $(this).attr('data-id');
+    layer.confirm('确定删除吗？', function (index) {
+        // 发送 ajax 请求
+        $.ajax({
+            url: '/my/article/delete/' + id,
+            success: function (res) {
+                layer.msg(res.message);
+                if (res.status === 0) {
+                    renderArticle(); // 重新获取数据渲染页面
+                }
+            }
+        })
+    })
 })
